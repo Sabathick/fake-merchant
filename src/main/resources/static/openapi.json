@@ -1,0 +1,103 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "fake-merchant",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/product": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProduct"
+              },
+              "examples": {
+                "Request": {
+                  "value": {
+                    "name": "some text",
+                    "price": 81.52
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/CreatedProduct"
+          }
+        },
+        "operationId": "create"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateProduct": {
+        "title": "Root Type for CreateProduct",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "example": {
+          "name": "produtoX",
+          "price": 99.9
+        }
+      },
+      "Product": {
+        "title": "Root Type for Product",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "example": {
+          "id": 1,
+          "name": "produtoX",
+          "price": 99.9
+        }
+      }
+    },
+    "responses": {
+      "CreatedProduct": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "examples": {
+              "Response": {
+                "value": {
+                  "id": 1,
+                  "name": "produtoX",
+                  "price": 99.9
+                }
+              }
+            }
+          }
+        },
+        "description": ""
+      }
+    }
+  }
+}
