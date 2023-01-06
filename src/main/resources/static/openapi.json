@@ -6,6 +6,50 @@
   },
   "paths": {
     "/product": {
+      "summary": "List of avaliable products in this merchant",
+      "description": "The products are avaliable to be changed in methods like add new itens, delete, update and all itens can be searched to be displayed in the API.",
+      "get": {
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/FindProduct"
+          },
+          "400": {
+            "$ref": "#/components/responses/NotFoundProduct"
+          }
+        },
+        "operationId": "findById",
+        "summary": "Mehod to see a product",
+        "description": "Method to find a product by id"
+      },
+      "put": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "samepleProductUpdate": {
+                  "value": {
+                    "id": 74,
+                    "name": "some text",
+                    "price": 24.04
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CreatedProduct"
+          }
+        },
+        "operationId": "updatedeById",
+        "summary": "Update",
+        "description": "Update the info of an product"
+      },
       "post": {
         "requestBody": {
           "content": {
@@ -30,7 +74,49 @@
             "$ref": "#/components/responses/CreatedProduct"
           }
         },
-        "operationId": "create"
+        "operationId": "create",
+        "summary": "Creating a new product",
+        "description": "Method to create a new product"
+      },
+      "delete": {
+        "parameters": [
+          {
+            "examples": {
+              "DeleteSample": {
+                "value": "97"
+              }
+            },
+            "name": "DeleteId",
+            "description": "",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Product deleted"
+          }
+        },
+        "operationId": "deleteById",
+        "summary": "Delete a product",
+        "description": "Delete a product by his Id"
+      }
+    },
+    "/": {
+      "summary": "The root of the merchant",
+      "description": "This path have the purpouse to show all the content without the Id filter",
+      "get": {
+        "responses": {
+          "200": {
+            "description": "List of all avaliable itens"
+          }
+        },
+        "operationId": "findAll",
+        "summary": "Find all itens",
+        "description": "Method to see all the itens in the merchant"
       }
     }
   },
@@ -38,7 +124,7 @@
     "schemas": {
       "CreateProduct": {
         "title": "Root Type for CreateProduct",
-        "description": "",
+        "description": "The data required to create a new product",
         "type": "object",
         "properties": {
           "name": {
@@ -56,7 +142,7 @@
       },
       "Product": {
         "title": "Root Type for Product",
-        "description": "",
+        "description": "The data we have about a product",
         "type": "object",
         "properties": {
           "id": {
@@ -96,7 +182,41 @@
             }
           }
         },
-        "description": ""
+        "description": "Response when the new product was created"
+      },
+      "FindProduct": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "examples": {
+              "foundProduct": {
+                "value": {
+                  "id": 1,
+                  "name": "produtoX",
+                  "price": 99.9
+                }
+              }
+            }
+          }
+        },
+        "description": "Response when the method find have success"
+      },
+      "NotFoundProduct": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "NotFound": {
+                "value": "The product with this id doesn't exist"
+              }
+            }
+          }
+        },
+        "description": "Response when the method find fails"
       }
     }
   }
