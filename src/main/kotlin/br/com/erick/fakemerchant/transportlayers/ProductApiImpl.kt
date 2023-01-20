@@ -3,6 +3,7 @@ package br.com.erick.fakemerchant.transportlayers
 import br.com.erick.fakemerchant.service.ProductService
 import com.br.com.erick.fakemerchant.openapi.api.ProductApi
 import com.br.com.erick.fakemerchant.openapi.model.CreateProduct
+import com.br.com.erick.fakemerchant.openapi.model.Findproduct
 import com.br.com.erick.fakemerchant.openapi.model.Product
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,8 +20,10 @@ class ProductApiImpl(
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
-    override fun findById(): ResponseEntity<Product>? {
-        this.productService.find()
+    fun findById(
+        findProducts: Findproduct?
+    ): ResponseEntity<Product?>? {
+        this.productService.findById(findProducts)
         return ResponseEntity(HttpStatus.FOUND)
     }
 

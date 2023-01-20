@@ -4,6 +4,7 @@ import br.com.erick.fakemerchant.datasource.entity.Products
 import br.com.erick.fakemerchant.datasource.repositories.ProductRepository
 import br.com.erick.fakemerchant.port.ProductPort
 import com.br.com.erick.fakemerchant.openapi.model.CreateProduct
+import com.br.com.erick.fakemerchant.openapi.model.Findproduct
 import org.springframework.stereotype.Component
 
 @Component
@@ -20,13 +21,9 @@ class ProductDataSource(
         )
     }
 
-    override fun findById(findProduct: Products?) {
+    override fun findById(findProduct: Findproduct?) {
        this.productRepository.findById(
-           Products(
-               id= null,
-               name = findProduct!!.name,
-               price = findProduct.price
-           )
+           TODO("Not yet implemented")
        )
     }
 
