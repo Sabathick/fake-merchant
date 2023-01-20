@@ -15,7 +15,7 @@ class ProductApiImpl(
     override fun create(
         createProduct: CreateProduct?
     ): ResponseEntity<Product?>? {
-        this.productService.save()
+        this.productService.save(createProduct)
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 

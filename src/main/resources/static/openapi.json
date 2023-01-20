@@ -162,6 +162,18 @@
           "name": "produtoX",
           "price": 99.9
         }
+      },
+      "Findproduct": {
+        "description": "",
+        "type": "object",
+        "allOf": [
+          {
+            "type": "object"
+          },
+          {
+            "$ref": "#/components/schemas/Product"
+          }
+        ]
       }
     },
     "responses": {
