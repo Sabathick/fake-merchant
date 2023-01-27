@@ -27,9 +27,9 @@ class ProductApiImpl(
         return ResponseEntity(HttpStatus.FOUND)
     }
 
-    override fun deleteById(deleteId: Int?): ResponseEntity<Void> {
-        this.productService.deleteById()
-        return super.deleteById(deleteId)
+    override fun deleteById(deleteById: DeleteProduct?): ResponseEntity<Void> {
+        this.productService.deleteById(deleteById)
+        return super.deleteById(deleteById)
     }
 
     override fun updatedeById(product: Product?): ResponseEntity<Product> {

@@ -21,8 +21,8 @@ class ProductService(
         this.productPort.findAll()
     }
 
-    fun deleteById() {
-        this.productPort.deleteById()
+    fun deleteById(deleteProduct: DeleteProduct?) {
+        this.productPort.deleteById(deleteProduct)
     }
 
     fun updateProduct() {

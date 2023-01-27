@@ -27,7 +27,7 @@ class ProductDataSource(
        )
     }
 
-    override fun deleteById() {
+    override fun deleteById(deleteProduct: DeleteProduct?) {
         TODO("Not yet implemented")
     }
 
