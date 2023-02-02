@@ -1,8 +1,8 @@
 package br.com.erick.fakemerchant.service
 
+import br.com.erick.fakemerchant.datasource.entity.Products
 import br.com.erick.fakemerchant.port.ProductPort
 import com.br.com.erick.fakemerchant.openapi.model.CreateProduct
-import com.br.com.erick.fakemerchant.openapi.model.Findproduct
 import org.springframework.stereotype.Service
 
 @Service
@@ -13,19 +13,19 @@ class ProductService(
         this.productPort.save(createProduct)
     }
 
-    fun findById(findProducts: Findproduct?) {
-        this.productPort.findById(findProducts)
+    fun find(findProduct: Products?) {
+        this.productPort.find(findProduct)
     }
 
     fun findAll() {
         this.productPort.findAll()
     }
 
-    fun deleteById(deleteProduct: DeleteProduct?) {
-        this.productPort.deleteById(deleteProduct)
+    fun delete(deleteProduct: Int) {
+        this.productPort.delete(deleteProduct)
     }
 
-    fun updateProduct() {
-        this.productPort.updateProduct()
+    fun update(updateProduct: Products?) {
+        this.productPort.update(updateProduct)
     }
 }
