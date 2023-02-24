@@ -1,11 +1,11 @@
 package br.com.erick.fakemerchant.port
 
-import br.com.erick.fakemerchant.datasource.entity.Products
-import com.br.com.erick.fakemerchant.openapi.model.CreateProduct
+import br.com.erick.fakemerchant.datasource.entity.model.Products
+import br.com.erick.fakemerchant.domain.entity.Products as Product
 
 interface ProductPort {
-    fun save(createProduct: CreateProduct?)
-    fun find(findProduct: Products?)
+    fun save(products: Product): Product
+    fun find(findProduct: Products?): Products
     fun delete(deleteProduct: Int)
     fun findAll()
     fun update(updateProduct: Products?)
